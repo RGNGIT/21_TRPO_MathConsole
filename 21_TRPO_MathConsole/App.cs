@@ -9,8 +9,11 @@
             MathExponentialHelper.SetupExpTables();
             chartNormal.Series.Clear();
             chartExp.Series.Clear();
+            chart1.Series.Clear();
             chartNormal.Series.Add("Нормальный");
             chartExp.Series.Add("Экспоненциальный");
+            chart1.Series.Add("Нормальный");
+            chart1.Series.Add("Экспоненциальный");
         }
 
         List<double> normals = new List<double>();
@@ -172,6 +175,8 @@
             }
             chartNormal.Series["Нормальный"].Points.DataBindXY(divgram.ToArray(), normalgram.ToArray());
             chartExp.Series["Экспоненциальный"].Points.DataBindXY(divgram.ToArray(), expgram.ToArray());
+            chart1.Series["Нормальный"].Points.DataBindXY(divgram.ToArray(), normalgram.ToArray());
+            chart1.Series["Экспоненциальный"].Points.DataBindXY(divgram.ToArray(), expgram.ToArray());
             normalavg = normalsum / 20;
             expavg = expsum / 80;
             labelResult.Text = $"Среднее значение нормального распределения: {normalavg}\n" +

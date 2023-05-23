@@ -34,6 +34,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             chartNormal = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartExp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             dataGridViewNormal = new DataGridView();
@@ -42,10 +45,12 @@
             Column2 = new DataGridViewTextBoxColumn();
             buttonStart = new Button();
             labelResult = new Label();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)chartNormal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartExp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNormal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewExp).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // chartNormal
@@ -114,7 +119,7 @@
             // 
             // buttonStart
             // 
-            buttonStart.Location = new Point(594, 876);
+            buttonStart.Location = new Point(1522, 876);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(383, 76);
             buttonStart.TabIndex = 4;
@@ -130,11 +135,28 @@
             labelResult.Size = new Size(0, 15);
             labelResult.TabIndex = 5;
             // 
+            // chart1
+            // 
+            chartArea3.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chart1.Legends.Add(legend3);
+            chart1.Location = new Point(983, 12);
+            chart1.Name = "chart1";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chart1.Series.Add(series3);
+            chart1.Size = new Size(922, 858);
+            chart1.TabIndex = 6;
+            chart1.Text = "chart1";
+            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(989, 964);
+            ClientSize = new Size(1917, 964);
+            Controls.Add(chart1);
             Controls.Add(labelResult);
             Controls.Add(buttonStart);
             Controls.Add(dataGridViewExp);
@@ -147,6 +169,7 @@
             ((System.ComponentModel.ISupportInitialize)chartExp).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNormal).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewExp).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,5 +184,6 @@
         private DataGridViewTextBoxColumn Column2;
         private Button buttonStart;
         private Label labelResult;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
