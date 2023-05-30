@@ -12,10 +12,8 @@
             chart1.Series.Clear();
             chartNormal.Series.Add("Нормальный");
             chartExp.Series.Add("Экспоненциальный");
-            chart1.Series.Add("1");
-            chart1.Series["1"].Color = Color.Black;
-            chart1.Series.Add("2");
-            chart1.Series["2"].Color = Color.Black;
+            chart1.Series.Add("Общий");
+            chart1.Series["Общий"].Color = Color.Black;
         }
 
         List<double> normals = new List<double>();
@@ -23,6 +21,7 @@
 
         List<double> normalgram = new List<double>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         List<double> expgram = new List<double>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        List<double> commongram = new List<double> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         List<double> divgram = new List<double>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         double normalsum = 0;
@@ -158,7 +157,34 @@
             return sum / (exps.Count - 1);
         }
 
-
+        string FindMinMax()
+        {
+            double min = normals[0];
+            double max = exps[expgram.Count - 1];
+            foreach (double i in normals)
+            {
+                if (i > max)
+                {
+                    max = i;
+                }
+                if(i < min)
+                {
+                    min = i;
+                }
+            }
+            foreach(double i in exps)
+            {
+                if (i > max)
+                {
+                    max = i;
+                }
+                if (i < min)
+                {
+                    min = i;
+                }
+            }
+            return $"{min}/{max}";
+        }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
@@ -177,8 +203,37 @@
             }
             chartNormal.Series["Нормальный"].Points.DataBindXY(divgram.ToArray(), normalgram.ToArray());
             chartExp.Series["Экспоненциальный"].Points.DataBindXY(divgram.ToArray(), expgram.ToArray());
-            chart1.Series["1"].Points.DataBindXY(divgram.ToArray(), normalgram.ToArray());
-            chart1.Series["2"].Points.DataBindXY(divgram.ToArray(), expgram.ToArray());
+            normals.Sort();
+            exps.Sort();
+            string[] minmax = FindMinMax().Split('/');
+            double min = double.Parse(minmax[0]);
+            double max = double.Parse(minmax[1]);
+            double step = (max - min) / 10;
+            int multiplier = 0;
+            for(int i = 0; i < 10; i++)
+            {
+                foreach(double j in normals)
+                {
+                    if ((j >= (step * multiplier)) && (j <= (step * (multiplier + 1))))
+                    {
+                        commongram[i]++;
+                    }
+                }
+                multiplier++;
+            }
+            multiplier = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                foreach (double j in exps)
+                {
+                    if ((j >= (step * multiplier)) && (j <= (step * (multiplier + 1))))
+                    {
+                        commongram[i]++;
+                    }
+                }
+                multiplier++;
+            }
+            chart1.Series["Общий"].Points.DataBindXY(divgram.ToArray(), commongram.ToArray());
             normalavg = normalsum / 20;
             expavg = expsum / 80;
             labelResult.Text = $"Среднее значение нормального распределения: {normalavg}\n" +
