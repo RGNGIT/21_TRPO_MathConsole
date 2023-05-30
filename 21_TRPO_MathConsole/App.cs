@@ -14,6 +14,9 @@
             chartExp.Series.Add("Экспоненциальный");
             chart1.Series.Add("Общий");
             chart1.Series["Общий"].Color = Color.Black;
+            chartNormal.ChartAreas[0].AxisY.Interval = 1;
+            chartExp.ChartAreas[0].AxisY.Interval = 1;
+            chart1.ChartAreas[0].AxisY.Interval = 2;
         }
 
         List<double> normals = new List<double>();
