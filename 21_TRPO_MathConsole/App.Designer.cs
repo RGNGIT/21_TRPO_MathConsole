@@ -46,11 +46,14 @@
             buttonStart = new Button();
             labelResult = new Label();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            dataGridViewCommon = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)chartNormal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartExp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNormal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewExp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCommon).BeginInit();
             SuspendLayout();
             // 
             // chartNormal
@@ -92,7 +95,7 @@
             dataGridViewNormal.Location = new Point(594, 12);
             dataGridViewNormal.Name = "dataGridViewNormal";
             dataGridViewNormal.RowTemplate.Height = 25;
-            dataGridViewNormal.Size = new Size(383, 426);
+            dataGridViewNormal.Size = new Size(193, 426);
             dataGridViewNormal.TabIndex = 2;
             // 
             // Column1
@@ -108,7 +111,7 @@
             dataGridViewExp.Location = new Point(594, 444);
             dataGridViewExp.Name = "dataGridViewExp";
             dataGridViewExp.RowTemplate.Height = 25;
-            dataGridViewExp.Size = new Size(383, 426);
+            dataGridViewExp.Size = new Size(193, 426);
             dataGridViewExp.TabIndex = 3;
             // 
             // Column2
@@ -141,21 +144,38 @@
             chart1.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             chart1.Legends.Add(legend3);
-            chart1.Location = new Point(983, 12);
+            chart1.Location = new Point(992, 12);
             chart1.Name = "chart1";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             chart1.Series.Add(series3);
-            chart1.Size = new Size(922, 858);
+            chart1.Size = new Size(913, 858);
             chart1.TabIndex = 6;
             chart1.Text = "chart1";
+            // 
+            // dataGridViewCommon
+            // 
+            dataGridViewCommon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCommon.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1 });
+            dataGridViewCommon.Location = new Point(793, 12);
+            dataGridViewCommon.Name = "dataGridViewCommon";
+            dataGridViewCommon.RowTemplate.Height = 25;
+            dataGridViewCommon.Size = new Size(193, 858);
+            dataGridViewCommon.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Общий";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 150;
             // 
             // App
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1917, 964);
+            Controls.Add(dataGridViewCommon);
             Controls.Add(chart1);
             Controls.Add(labelResult);
             Controls.Add(buttonStart);
@@ -170,6 +190,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewNormal).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewExp).EndInit();
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCommon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -185,5 +206,7 @@
         private Button buttonStart;
         private Label labelResult;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private DataGridView dataGridViewCommon;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

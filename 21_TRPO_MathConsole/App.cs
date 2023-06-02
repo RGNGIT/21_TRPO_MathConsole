@@ -170,12 +170,12 @@
                 {
                     max = i;
                 }
-                if(i < min)
+                if (i < min)
                 {
                     min = i;
                 }
             }
-            foreach(double i in exps)
+            foreach (double i in exps)
             {
                 if (i > max)
                 {
@@ -213,9 +213,17 @@
             double max = double.Parse(minmax[1]);
             double step = (max - min) / 10;
             int multiplier = 0;
-            for(int i = 0; i < 10; i++)
+            foreach(double val in normals)
             {
-                foreach(double j in normals)
+                dataGridViewCommon.Rows.Add(val);
+            }
+            foreach(double val in exps) 
+            {
+                dataGridViewCommon.Rows.Add(val);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                foreach (double j in normals)
                 {
                     if ((j >= (step * multiplier)) && (j <= (step * (multiplier + 1))))
                     {
